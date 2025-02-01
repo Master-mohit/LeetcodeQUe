@@ -28,3 +28,15 @@ class Solution {
         return (x2-x1)*(y3-y1)!=(y2-y1)*(x3-x1);
     }
 }
+
+class Solution {
+    public int removePalindromeSub(String s) {
+        int acount=0;
+        int bcount=0;
+         String reversed = new StringBuilder(s).reverse().toString();
+    if(s.equals(reversed)){
+        return 1;
+    }
+       return 2;  
+    }
+}
