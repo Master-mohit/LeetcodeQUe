@@ -104,3 +104,31 @@ class Solution {
         return false;
     }
 }
+class Solution {
+    public int[] arrayRankTransform(int[] arr) {
+        if(arr==null || arr.length==0){
+            return arr;
+        }
+        //create a sorted array
+        int[] sortedArray=Arrays.copyOf(arr,arr.length);
+        Arrays.sort(sortedArray);
+
+        //use a map to store ranks
+        Map<Integer,Integer> rankMap=new HashMap<>();
+        int rank=1;
+        for(int num:sortedArray){
+            if(!rankMap.containsKey(num)){
+                rankMap.put(num,rank);
+                rank++;
+            }
+        }
+
+          // Step 3: Replace the original array elements with their ranks
+        int[] result = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            result[i] = rankMap.get(arr[i]);
+        }
+
+        return result;
+    }
+}
