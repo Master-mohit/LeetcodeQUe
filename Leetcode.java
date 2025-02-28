@@ -165,3 +165,47 @@ class Solution {
         return (int) daysBetween;
     }
 }
+
+import java.util.*;
+
+class Solution {
+    public String sortString(String s) {
+        StringBuilder sb = new StringBuilder(s);
+        HashSet<Character> set = new HashSet<>(); 
+        for (int i = 0; i < s.length(); i++) {
+            set.add(s.charAt(i));
+        } 
+
+        char[] arr = new char[set.size()];
+        int ind = 0;
+        for (char c : set) {
+            arr[ind++] = c;
+        } 
+
+        Arrays.sort(arr);
+        StringBuilder res = new StringBuilder();
+        
+       
+        while (sb.length() > 0) {
+            
+            for (int i = 0; i < arr.length; i++) {
+                if (sb.indexOf(String.valueOf(arr[i])) != -1) { 
+                    res.append(arr[i]);
+                    int index = sb.indexOf(String.valueOf(arr[i])); 
+                    sb.deleteCharAt(index);  
+                }
+            }
+
+            
+            for (int i = arr.length - 1; i >= 0; i--) {
+                if (sb.indexOf(String.valueOf(arr[i])) != -1) { 
+                    res.append(arr[i]);
+                    int index = sb.indexOf(String.valueOf(arr[i])); 
+                    sb.deleteCharAt(index); 
+                }
+            }
+        }
+
+        return res.toString();
+    }
+}
