@@ -209,3 +209,23 @@ class Solution {
         return res.toString();
     }
 }
+
+class Solution {
+    public int minStartValue(int[] nums) {
+        int[] prefixSum = new int[nums.length];
+        prefixSum[0] = nums[0];
+
+        for(int i=1;i<nums.length;i++){
+            prefixSum[i] = prefixSum[i-1]+nums[i];
+            System.out.println(prefixSum[i]);
+        }
+
+        int min = Integer.MAX_VALUE;
+
+        for(int p:prefixSum){
+            min = Math.min(min, p);
+        }
+
+        return min<0?Math.abs(min)+1:1;
+    }
+}
