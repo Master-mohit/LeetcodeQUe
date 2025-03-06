@@ -229,3 +229,17 @@ class Solution {
         return min<0?Math.abs(min)+1:1;
     }
 }
+
+class Solution {
+    public int minimumOperations(int[] nums) {
+        int count1=0,count2=0;
+        for(int num:nums){
+            if(num%3==1){
+                count1++;
+            }else if(num%3==2){
+                count2++;
+            }
+        }
+        return count1+count2;
+    }
+}
